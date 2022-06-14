@@ -14,12 +14,14 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
 	@Override   //用來註冊相當於mvc-servlet.xml java程式組態類別用
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] {WebAppConfig.class};
+//		return new Class[] {WebAppConfig.class};
+		return null;
 	}
 
 	@Override    //用來設定servlet mapping 的url
 	protected String[] getServletMappings() {
-		return new String[] {"/"};
+//		return new String[] {"/"};
+		return null;
 	}
 
 	@Override
@@ -27,7 +29,9 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 		CharacterEncodingFilter cef = new CharacterEncodingFilter();
 		cef.setEncoding("UTF-8");
 		cef.setForceEncoding(true);
+//		CharacterEncodingFilter cef = new CharacterEncodingFilter("UTF-8",true);
 		return new Filter[] {cef};
+		
 	}
 
 }
