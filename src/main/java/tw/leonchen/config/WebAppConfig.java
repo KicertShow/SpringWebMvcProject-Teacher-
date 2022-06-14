@@ -5,9 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-//@Configuration
-//@ComponentScan(basePackages = "tw.leonchen")
-//@EnableWebMvc
+@Configuration
+@ComponentScan(basePackages = "tw.leonchen")
+@EnableWebMvc
 
 
 //    /* 上面三個等於下面三個設定
