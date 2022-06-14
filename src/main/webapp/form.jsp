@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2>Form</h2>
-<form action="hello2.controller" method="get">
+<form action="hello2.controller" method="POST">  <!-- 亂碼用web.xml filter 去解決亂碼問題 -->
 	<table>
 		<tr>
 			<td>Name</td>

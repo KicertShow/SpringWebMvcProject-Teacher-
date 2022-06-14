@@ -35,7 +35,26 @@ public class HelloController2 {
 		status.setComplete();// 這行可以清掉 session的資料
 		return "/success.jsp";
 	}
-
+	
+	@RequestMapping(path = "/hello2.controller",method = RequestMethod.POST)  //等於前端的action and 方法
+	public String processAction2(@RequestParam("userName") String userName,Model m,SessionStatus status) {
+		//String userName = request.getParameter("userName"); 由上方取代
+		Map<String, String> errors =new HashMap<String,String>();
+		m.addAttribute("errors", errors);  //=request.setAttribute("errors", errors);
+	
+		if (userName==null || userName.length()==0) {
+			errors.put("name", "name is required");
+		}
+	
+		if (errors !=null && !errors.isEmpty()) {
+//		return new  ModelAndView("/form.jsp");
+			return "/form.jsp";
+		}
+		m.addAttribute("userName", userName);
+		
+		status.setComplete();// 這行可以清掉 session的資料
+		return "/success.jsp";
+	}
 
 	
 }

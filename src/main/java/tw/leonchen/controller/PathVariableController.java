@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class PathVariableController {
-
+	
 	@RequestMapping(path = "/members/{mid}",method = RequestMethod.GET)
 	public String processAction(@PathVariable("mid") String memberId,Model m) { 
-		m.addAttribute("mid", memberId);
+		m.addAttribute("id", memberId);
 		return "/pathVariableResult.jsp";
 	}
 }
