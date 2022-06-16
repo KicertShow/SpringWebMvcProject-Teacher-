@@ -5,10 +5,13 @@ import java.util.Properties;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jndi.JndiObjectFactoryBean;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -46,7 +49,7 @@ public class RootAppConfig {
 //       <property name="packagesToScan" value="tw.leonchen.model"/>
 //       <property name="hibernateProperties">
 
-	private Properties addtionalProperties() {
+		private Properties addtionalProperties() {
 		Properties props = new Properties();
 		props.put("hibernate.dialect", org.hibernate.dialect.SQLServerDialect.class);
 		props.put("hibernate.show_sql", Boolean.TRUE);
@@ -59,5 +62,12 @@ public class RootAppConfig {
 //          <prop key="hibernate.format_sql">true</prop>
 //<!--      <prop key="hibernate.current_session_context_class">thread</prop>    會跟spring mvc衝禿 所以註解-->   
 	}
+		@Bean
+		@Autowired
+		public HibernateTransactionManager  transactionManager(SessionFactory sessionFactory) {
+			HibernateTransactionManager txMgr = new HibernateTransactionManager();
+			txMgr.setSessionFactory(sessionFactory);
+			return txMgr;
+		}
 
 }
