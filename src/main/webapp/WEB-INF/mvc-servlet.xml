@@ -11,7 +11,7 @@
     <context:component-scan base-package="tw.leonchen"/>
     <mvc:annotation-driven/> 
 
-    <bean id="helloController" name="/hello.controller" class="tw.leonchen.controller.HelloController"/>
+<!--     <bean id="helloController" name="/hello.controller" class="tw.leonchen.controller.HelloController"/> -->
     
     <bean id="irViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
        <property name="prefix" value="/WEB-INF/pages/"/>   <!-- 可以在Controller return 省掉前面路徑 因為放進去web-inf pages 無法在在網頁跳到某頁面-->

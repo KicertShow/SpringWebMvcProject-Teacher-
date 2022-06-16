@@ -22,7 +22,7 @@
 		</tr>
 		<tr>
 			<td><button type="submit" value="login">Login</button></td>
-			<td>${errors.pwd}</td>
+			<td>${errors.msg}</td>
 		</tr>
 	</table>
 	
