@@ -15,7 +15,7 @@ import org.springframework.web.bind.support.SessionStatus;
 @SessionAttributes(names = {"userName"} )
 public class HelloController2 {
 	
-	@RequestMapping(path = "/hell2omain.controller",method = RequestMethod.GET)
+	@RequestMapping(path = "/hello2main.controller",method = RequestMethod.GET)
 	public String processMainAction() {
 		return "form";
 	}

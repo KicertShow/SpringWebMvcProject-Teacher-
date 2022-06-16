@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+<!--     <aop:aspectj-autoproxy/>   拿掉aop 需要用去下方Namespaces 開啟-->
+    <context:annotation-config/>  <!-- 支援annotation效用 -->
+    <context:component-scan base-package="tw.leonchen"/> <!-- 去這個路徑掃描 -->
+    <mvc:annotation-driven/>  <!-- 支援mvc annotation效用 -->
+    
+   
+
+<tx:annotation-driven transaction-manager="transactionManager"/>
+     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">  <!-- 交易管理員 自動交易 -->
+     	<property name="sessionFactory" ref="sessionFactory"/>
+     </bean>
+    
+    
+    
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+       <property name="jndiName" value="java:comp/env/connectSqlServerJdbc/SystemService"/>
+    </bean>
+<!--     spring 取代hibernate 設定檔案 -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+       <property name="dataSource" ref="dataSource"/>
+       <property name="packagesToScan" value="tw.leonchen.model"/>
+       <property name="hibernateProperties">
+          <props>
+             <prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+             <prop key="hibernate.show_sql">true</prop>
+             <prop key="hibernate.format_sql">true</prop>
+<!--              <prop key="hibernate.current_session_context_class">thread</prop>    會跟spring mvc衝禿 所以註解-->   
+          </props>
+       </property>
+    </bean>
+    
+   
+    
+	
+</beans>
