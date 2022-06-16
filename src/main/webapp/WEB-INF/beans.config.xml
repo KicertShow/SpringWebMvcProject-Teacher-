@@ -17,6 +17,7 @@
    
 
 <tx:annotation-driven transaction-manager="transactionManager"/>
+
      <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">  <!-- 交易管理員 自動交易 -->
      	<property name="sessionFactory" ref="sessionFactory"/>
      </bean>
@@ -26,6 +27,8 @@
     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
        <property name="jndiName" value="java:comp/env/connectSqlServerJdbc/SystemService"/>
     </bean>
+    
+    
 <!--     spring 取代hibernate 設定檔案 -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
        <property name="dataSource" ref="dataSource"/>
