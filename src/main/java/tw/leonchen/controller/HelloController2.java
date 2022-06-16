@@ -15,6 +15,11 @@ import org.springframework.web.bind.support.SessionStatus;
 @SessionAttributes(names = {"userName"} )
 public class HelloController2 {
 	
+	@RequestMapping(path = "/hell2omain.controller",method = RequestMethod.GET)
+	public String processMainAction() {
+		return "form";
+	}
+	
 	
 	@RequestMapping(path = "/hello2.controller",method = RequestMethod.GET)  //等於前端的action and 方法
 	public String processAction(@RequestParam("userName") String userName,Model m,SessionStatus status) {
@@ -28,12 +33,12 @@ public class HelloController2 {
 	
 		if (errors !=null && !errors.isEmpty()) {
 //		return new  ModelAndView("/form.jsp");
-			return "/form.jsp";
+			return "form";
 		}
 		m.addAttribute("userName", userName);
 		
 		status.setComplete();// 這行可以清掉 session的資料
-		return "/success.jsp";
+		return "success";
 	}
 	
 	@RequestMapping(path = "/hello2.controller",method = RequestMethod.POST)  //等於前端的action and 方法
@@ -48,12 +53,12 @@ public class HelloController2 {
 	
 		if (errors !=null && !errors.isEmpty()) {
 //		return new  ModelAndView("/form.jsp");
-			return "/form.jsp";
+			return "form";
 		}
 		m.addAttribute("userName", userName);
 		
 		status.setComplete();// 這行可以清掉 session的資料
-		return "/success.jsp";
+		return "success";
 	}
 
 	

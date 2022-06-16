@@ -12,6 +12,6 @@ public class PathVariableController {
 	@RequestMapping(path = "/members/{mid}",method = RequestMethod.GET)
 	public String processAction(@PathVariable("mid") String memberId,Model m) { 
 		m.addAttribute("id", memberId);
-		return "/pathVariableResult.jsp";
+		return "pathVariableResult";
 	}
 }
