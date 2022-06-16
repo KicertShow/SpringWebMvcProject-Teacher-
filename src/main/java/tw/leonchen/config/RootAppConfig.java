@@ -28,8 +28,8 @@ public class RootAppConfig {
 	@Bean
 	public DataSource dataSource() throws IllegalArgumentException, NamingException {
 		JndiObjectFactoryBean jndiBean = new JndiObjectFactoryBean();
-		jndiBean.afterPropertiesSet();
 		jndiBean.setJndiName("java:comp/env/connectSqlServerJdbc/SystemService");
+		jndiBean.afterPropertiesSet();  //順序不可以移動 上面需先載入
 		DataSource ds = (DataSource)jndiBean.getObject();
 		return ds;
 	}
