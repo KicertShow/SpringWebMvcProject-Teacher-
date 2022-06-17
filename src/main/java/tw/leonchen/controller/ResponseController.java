@@ -1,5 +1,7 @@
 package tw.leonchen.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,11 +13,15 @@ public class ResponseController {
 	@ResponseBody
 	public String processResponseBodyAction() {
 		return "Have a nice day !!";
-	}
-	@GetMapping(path="/responsebody2.controller",produces = "text/plain;charset=UTF-8")
+	}															//text/html == html or plain or xml 轉換文件格式  (1,2) 1=文件格式 2=編碼格式 
+	@GetMapping(path="/responsebody2.controller",produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String processResponseBodyAction2() {
 		return "Have a nice day 你好 !!";
+	}
+	@GetMapping(path = "responseEntity.controller")
+	public ResponseEntity<String> processResponseEntity() {
+		return new ResponseEntity<String>("Custom Status Code(403 Forbidden)",HttpStatus.FORBIDDEN);
 	}
 
 }
