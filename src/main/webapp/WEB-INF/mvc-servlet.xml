@@ -12,13 +12,15 @@
     <mvc:annotation-driven/> 
 	<mvc:default-servlet-handler/>   <!-- 加了這段才可以用html -->
 
-	
 	<mvc:resources location="/WEB-INF/resources/images/" mapping="/images/**"/>
     <mvc:resources location="/WEB-INF/resources/css/" mapping="/css/**"/>
 	
 	<mvc:view-controller path="/" view-name="redirect:memebersMain.controller"/>
 	<mvc:view-controller path="/funny.sweet" view-name="form"/>
 	
+
+	
+	<mvc:view-controller path="/showresources.info" view-name="showResources"/>
 <!-- 	 負責讀取 檔案  抓取file path -->
 	  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
        <property name="basename" value="i18n.message"/>
