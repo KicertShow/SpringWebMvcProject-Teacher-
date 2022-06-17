@@ -1,5 +1,12 @@
 package tw.leonchen.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.IOUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -32,5 +39,11 @@ public class ResponseController {
 		heads.setContentType(MediaType.TEXT_PLAIN);
 		return new ResponseEntity<String>("Custom Headers",heads,HttpStatus.OK);
 	}
+	@GetMapping(path = "/responseimage.controller",produces = "text/plain;charset=UTF-8")
+	public void processImgeAction(HttpServletRequest request,HttpServletResponse response) throws IOException {
+		InputStream in = request.getServletContext().getResourceAsStream("/WEB-INF/resources/images/my01.jpg");
+		IOUtils.copy(in, response.getOutputStream());
+	}
+	
 
 }
