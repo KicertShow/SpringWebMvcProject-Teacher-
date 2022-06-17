@@ -12,6 +12,13 @@
     <mvc:annotation-driven/> 
 	
 	
+	<mvc:resources location="/WEB-INF/resources/images" mapping="/images/**"/>
+	<mvc:resources location="/WEB-INF/resources/css" mapping="/css/**"/>
+	
+	
+	<mvc:view-controller path="/" view-name="redirect:memebersMain.controller"/>
+	<mvc:view-controller path="/funny.sweet" view-name="form"/>
+	
 <!-- 	 負責讀取 檔案  抓取file path -->
 	  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
        <property name="basename" value="i18n.message"/>
