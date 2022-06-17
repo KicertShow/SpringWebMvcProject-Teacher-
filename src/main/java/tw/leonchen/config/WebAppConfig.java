@@ -13,9 +13,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 
 
-@Configuration
-@ComponentScan(basePackages = "tw.leonchen")
-@EnableWebMvc
+//@Configuration
+//@ComponentScan(basePackages = "tw.leonchen")
+//@EnableWebMvc
 
 //    /* 上面三個等於下面三個設定
 //<context:annotation-config/>

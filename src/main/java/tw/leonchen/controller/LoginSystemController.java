@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,12 @@ public class LoginSystemController {
 	public String processMainAction() {
 		return "loginSystem";
 	}
+//	@GetMapping("/xxxxx")   自己練習
+//	public String intoLogin() {
+//		return "loginSystem";
+//	}
+	
+	
 	@RequestMapping(path  = "/checklogin.controller",method = RequestMethod.POST)
 	public String processAction(@RequestParam("userName")String user,@RequestParam("userPwd")String pwd,Model m) {
 		HashMap<String, String> errors = new HashMap<String, String>();

@@ -10,12 +10,34 @@
     <context:annotation-config/>
     <context:component-scan base-package="tw.leonchen"/>
     <mvc:annotation-driven/> 
-
+	
+	
+<!-- 	 負責讀取 檔案  抓取file path -->
+	  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+       <property name="basename" value="i18n.message"/>
+       <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+	
+<!-- 	攔截器偵測 -->
+	<mvc:interceptors>
+       <mvc:interceptor>
+         <mvc:mapping path="/**"/>
+         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="locale"/>
+         </bean>
+       </mvc:interceptor>
+    </mvc:interceptors>
 <!--     <bean id="helloController" name="/hello.controller" class="tw.leonchen.controller.HelloController"/> -->
     
+    
+<!--     解析地區 -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+    	
     <bean id="irViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
        <property name="prefix" value="/WEB-INF/pages/"/>   <!-- 可以在Controller return 省掉前面路徑 因為放進去web-inf pages 無法在在網頁跳到某頁面-->
        <property name="suffix" value=".jsp"/>  <!-- 可以在Controller return 省掉後面路徑 因為放進去web-inf pages 無法在在網頁跳到某頁面-->
     </bean>
+    
+    
     
 </beans>
