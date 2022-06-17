@@ -1,18 +1,26 @@
 package tw.leonchen.config;
 
+import java.util.ArrayList;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 //@Configuration
 //@ComponentScan(basePackages = "tw.leonchen")
 //@EnableWebMvc
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 
 
@@ -57,6 +65,27 @@ public class WebAppConfig implements WebMvcConfigurer {
 		CommonsMultipartResolver cmr1 = new CommonsMultipartResolver();
 		cmr1.setDefaultEncoding("UTF-8");
 		return cmr1;
+	}
+	@Bean
+	public MappingJackson2JsonView jasonVIew() {
+		MappingJackson2JsonView jason2view = new MappingJackson2JsonView();
+		jason2view.setPrettyPrint(true);
+		return jason2view;
+	}
+	@Bean
+	public  Jaxb2Marshaller jaxbMarshaller() {
+		Jaxb2Marshaller jax2 = new Jaxb2Marshaller();
+		jax2.setPackagesToScan("tw.leonchen");
+		return jax2;
+	}
+	@Bean
+	public ContentNegotiatingViewResolver negociateViewResolver() {
+			ContentNegotiatingViewResolver cnvr1 = new ContentNegotiatingViewResolver();		
+			ArrayList<View> list = new ArrayList<View>();
+			list.add(jasonVIew());			
+			cnvr1.setDefaultViews(list);
+			return cnvr1;
+			
 	}
 
 }

@@ -29,7 +29,7 @@ public class UploadFileController {
 	public String processAction(HttpServletRequest request, @RequestParam("myFiles") MultipartFile mf) throws IOException {
 		String fileName = mf.getOriginalFilename();
 		
-		byte[] bytes = mf.getBytes();
+		byte[] bytes = mf.getBytes();  //先讀取 很重要 不可以變更位置  
 		
 		String saveDir = "c:/temp/upload";
 		File saveFileDir = new File(saveDir);
