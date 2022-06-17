@@ -3,7 +3,6 @@ package tw.leonchen.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,18 +19,14 @@ public class MemberCOntroller {
 		m.addAttribute("members", mem);
 		return "members";
 	}
-//	@GetMapping("ccc")   自已練習
-//	public String loginTest(Model m) {
-//		return "";
-//	}
+
 	@RequestMapping(path = "/addMembers",method = RequestMethod.POST)
-	public String processAction(@ModelAttribute("members")Member mem2,BindingResult result,Model m2) {
+	public String processAction(@ModelAttribute("members")Member member,BindingResult result,Model m2) {
 		if (result.hasErrors()) {
 			return "membersError";
 		}
-		m2.addAttribute("mName", mem2.getMemberName());
-		m2.addAttribute("mGender", mem2.getGender());
-		m2.addAttribute("mAge", mem2.getAge());
+		m2.addAttribute("mName", member.getMemberName());
+		m2.addAttribute("mGender", member.getGender());
 		return "memberResult";
 	}
 }
