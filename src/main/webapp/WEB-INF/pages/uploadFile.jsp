@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,16 +6,10 @@
 <title>UploadFile</title>
 </head>
 <body>
-<form action="upload" method="post" enctype="multipart-/form-data">
-
-</form>
-
-
-
 <form action="uploadfile.controller" method="post" enctype="multipart/form-data">
-		Please Select Your Picture to Upload:<br/>
-		<input type="file" name="myFiles"/>
-		<input type="submit" value="Upload"/>
+    Please Select Your Picture to Upload:<br/>
+    <input type="file" name="myFiles"/>
+    <input type="submit" value="upload"/>
 </form>
 </body>
 </html>
