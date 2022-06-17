@@ -3,6 +3,7 @@ package tw.leonchen.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -49,6 +50,13 @@ public class WebAppConfig implements WebMvcConfigurer {
 		irve1.setSuffix(".jsp");
 		irve1.setOrder(6);
 		return irve1;
+	}
+//	完成檔案上傳功能  from org.springframework.web.multipart.commons.CommonsMultipartResolver
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver cmr1 = new CommonsMultipartResolver();
+		cmr1.setDefaultEncoding("UTF-8");
+		return cmr1;
 	}
 
 }
