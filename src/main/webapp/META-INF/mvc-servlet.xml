@@ -17,9 +17,6 @@
 	
 	<mvc:view-controller path="/" view-name="redirect:memebersMain.controller"/>
 	<mvc:view-controller path="/funny.sweet" view-name="form"/>
-	
-
-	
 	<mvc:view-controller path="/showresources.info" view-name="showResources"/>
 <!-- 	 負責讀取 檔案  抓取file path -->
 	  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">

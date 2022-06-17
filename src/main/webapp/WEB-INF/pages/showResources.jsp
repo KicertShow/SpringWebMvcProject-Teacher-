@@ -9,6 +9,6 @@
 </head>
 <body>
 <img alt="no images" src="images/my01.jpg" width="360px" height="420px">
-<div id="red">This Message for SpringMvc Resources Test.</div>
+<div id="blue">This Message for SpringMvc Resources Test.</div>
 </body>
 </html>
