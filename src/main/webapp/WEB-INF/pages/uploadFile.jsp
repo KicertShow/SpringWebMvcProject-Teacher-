@@ -7,6 +7,12 @@
 <title>UploadFile</title>
 </head>
 <body>
+<form action="upload" method="post" enctype="multipart-/form-data">
+
+</form>
+
+
+
 <form action="uploadfile.controller" method="post" enctype="multipart/form-data">
 		Please Select Your Picture to Upload:<br/>
 		<input type="file" name="myFiles"/>

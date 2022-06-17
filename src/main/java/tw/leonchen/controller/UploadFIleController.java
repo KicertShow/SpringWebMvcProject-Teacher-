@@ -1,6 +1,9 @@
 package tw.leonchen.controller;
 
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -20,9 +23,22 @@ public class UploadFIleController {
 	
 	@PostMapping("uploadfile.controller")
 	@ResponseBody
-	public String  processAction(HttpServletRequest request ,@RequestParam("myFiles")MultipartFile mf) {
-			String fileName = mf.getOriginalFilename();	
-		return "fileName:=" +fileName;
+	public String  processAction(HttpServletRequest request ,@RequestParam("myFiles")MultipartFile mf) throws  IOException {
+			String fileName = mf.getOriginalFilename();	 //取得上傳檔案的name
+			
+			String saveDir  = "c:/temp/upload";
+			File saveFileDir = new File(saveDir);
+			
+			if (!saveFileDir.exists()) { //判斷存不存在
+				 saveFileDir.mkdirs();  //建資料夾
+			}
+			String saveFilePath = saveDir +"/" +fileName;
+			File saveFile = new File(saveFileDir,fileName);
+//			File saveFile = new File(saveFilePath);  第二種寫法 正確 
+			
+			mf.transferTo(saveFile);
+		return "saveFile:=" +saveFile;
 	}
+	
 	
 }
