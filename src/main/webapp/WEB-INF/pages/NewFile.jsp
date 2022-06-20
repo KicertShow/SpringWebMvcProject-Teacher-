@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-account:${account} <br/>
-password:{password} <br/>
+<h1>123</h1>
 </body>
 </html>

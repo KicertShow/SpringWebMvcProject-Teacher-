@@ -9,9 +9,11 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-@Entity @Table(name = "house")
+@Entity 
+@Table(name = "house")
 @Component("house")
 public class House {
+	
 
 	@Id @Column(name = "HOUSEID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

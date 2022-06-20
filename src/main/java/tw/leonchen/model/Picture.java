@@ -20,7 +20,7 @@ public class Picture {
 	@Column(name = "filename")
 	private String filename;
 	
-	@Column(name = "picture")
+	@Column(columnDefinition = "varbinary(MAX)" ,name = "picture")
 	private byte[] picture;
 	
 	public Picture() {

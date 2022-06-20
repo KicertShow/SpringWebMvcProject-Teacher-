@@ -11,9 +11,9 @@ import tw.leonchen.model.Member;
 
 @Controller
 public class MemberCOntroller {
-	@RequestMapping(path = "/memebersMain.controller",method = RequestMethod.GET)
 //	@GetMapping(path = "/memebersMain.controller") 新型寫法 固定get
 //	@GetMapping("/memebersMain.controller")   新型寫法
+	@RequestMapping(path = "/memebersMain.controller",method = RequestMethod.GET)
 	public String processMainAction(Model m) {
 		Member mem = new Member();
 		m.addAttribute("members", mem);

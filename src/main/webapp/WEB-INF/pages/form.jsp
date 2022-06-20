@@ -9,7 +9,7 @@
 
 <body>
 	<h1>This is practice Spring </h1>
-	<form action="test" method="get">
+	<form action="hello2.controller" method="post">
 		<table>
 			<tr>
 				<td>Name</td>

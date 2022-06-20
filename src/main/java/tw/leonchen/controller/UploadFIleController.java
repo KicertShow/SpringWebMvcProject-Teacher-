@@ -17,7 +17,7 @@ import tw.leonchen.model.Picture;
 import tw.leonchen.model.PictureService;
 
 @Controller
-public class UploadFileController {
+public class UploadFIleController {
 	
 	@GetMapping("/uploadmain.controller")
 	public String processMainAction() {
